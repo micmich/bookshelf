@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import {jsx} from '@emotion/core'
 import styled from '@emotion/styled'
 import {Dialog as ReachDialog} from '@reach/dialog'
 
@@ -22,6 +24,29 @@ import {Dialog as ReachDialog} from '@reach/dialog'
 //   lineHeight: '1',
 //   borderRadius: '3px',
 
+const buttonBaseClass = {
+  padding: '10px 15px',
+  border: '0',
+  lineHeight: '1',
+  borderRadius: '3px',
+}
+
+
+
+const Button = styled.button(
+    buttonBaseClass,
+    props => ({
+      ...(props.variant === 'primary' ? {
+        background: '#3f51b5',
+        color: 'white',
+      } : {}),
+      ...(props.variant === 'secondary' ? {
+        background: '#f1f2f7',
+        color: '#434449',
+      } : {}),
+    })
+)
+
 // Button variant="primary" (in addition to the above styles)
 //   background: '#3f51b5',
 //   color: 'white',
@@ -36,9 +61,21 @@ import {Dialog as ReachDialog} from '@reach/dialog'
 //   background: '#f1f2f7',
 //   padding: '8px 12px',
 
+const Input = styled.input({
+  borderRadius: '3px',
+  border: '1px solid #f1f1f4',
+  background: '#f1f2f7',
+  padding: '8px 12px',
+})
+
 // FormGroup
 //   display: 'flex',
 //   flexDirection: 'column',
+
+const FormGroup = styled.div({
+  display: 'flex',
+  flexDirection: 'column',
+})
 
 // 💰 I'm giving a few of these to you:
 const CircleButton = styled.button({
@@ -68,4 +105,4 @@ const Dialog = styled(ReachDialog)({
   },
 })
 
-export {CircleButton, Dialog}
+export {CircleButton, Dialog, FormGroup, Input, Button}
